@@ -16,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/marcpre/learning_npm_web3/issues"
   },
-  "homepage": "https://github.com/marcpre/learning_npm_web3#readme"
+  "homepage": "https://github.com/marcpre/learning_npm_web3#readme",
+  "dependencies": {
+    "web3": "^1.0.0-beta.29"
+  },
+  "devDependencies": {
+    "ganache-cli": "^6.0.3",
+    "truffle": "^4.0.6"
+  }
 }

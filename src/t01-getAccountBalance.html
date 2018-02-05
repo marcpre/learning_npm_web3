@@ -1,0 +1,41 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Get Account Balance</title>
+
+</head>
+
+<body>
+
+    <div id="accountInfo">
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script type="text/javascript">
+        if (typeof web3 !== 'undefined') {
+            web3Provider = web3.currentProvider;
+        }
+        else {
+            // If no injected web3 instance is detected, fall back to Ganache
+            web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
+        }
+        web3 = new Web3(App.web3Provider);
+
+        try {
+            const accounts = await web3.eth.getAccounts()
+            console.log("accounts", accounts)
+
+            const balance = await web3.eth.getBalance(accounts[1])
+            console.log("balance", web3.fromWei(balance, "ether"))
+        }
+        catch (err => console.error(err))
+    </script>
+</body>
+
+</html>
