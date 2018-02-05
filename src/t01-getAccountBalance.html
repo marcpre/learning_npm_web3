@@ -20,21 +20,30 @@
     <script type="text/javascript">
         if (typeof web3 !== 'undefined') {
             web3Provider = web3.currentProvider;
-        }
-        else {
+        } else {
             // If no injected web3 instance is detected, fall back to Ganache
             web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
         }
-        web3 = new Web3(App.web3Provider);
+        web3 = new Web3(web3Provider);
+        
+        web3.eth.defaulAccount = web3.eth.accounts[0]
+        
+        var FriendContract = web.eth.contract()
+        
+        async function getBalance() {
+            try {
 
-        try {
-            const accounts = await web3.eth.getAccounts()
-            console.log("accounts", accounts)
+                const accounts = await web3.eth.getAccounts()
+                console.log("accounts", accounts)
 
-            const balance = await web3.eth.getBalance(accounts[1])
-            console.log("balance", web3.fromWei(balance, "ether"))
+                const balance = await web3.eth.getBalance(accounts[1])
+                console.log("balance", web3.fromWei(balance, "ether"))
+            } catch (err) { 
+                console.error(err)
+            }
         }
-        catch (err => console.error(err))
+
+        getBalance();
     </script>
 </body>
 
