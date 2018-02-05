@@ -13,5 +13,4 @@ contract Friend {
     function getFriend() public constant returns (string, uint) {
         return(name, age);
     }
-
 }
