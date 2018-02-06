@@ -28,12 +28,13 @@
 
         web3.eth.defaulAccount = web3.eth.accounts[0]
 
-        console.log("getBalance:")
-        const accounts = web3.eth.accounts
-        console.log("accounts", accounts)
-
-        const balance = web3.eth.getBalance(web3.eth.accounts[1])
-        console.log("balance", web3.fromWei(balance, "ether"))
+        (async () => {
+          const accounts = await web3.eth.getAccounts();
+          console.log(accounts);
+        
+          const balance = await web3.eth.getBalance(accounts[0]);
+          console.log("balance", web3.utils.fromWei(balance, "ether"));
+        })();
     </script>
 </body>
 
